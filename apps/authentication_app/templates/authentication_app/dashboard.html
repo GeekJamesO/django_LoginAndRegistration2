@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/static/authentication_app/master.css">
+    </head>
+
+    <body>
+        <div class="Container">
+            <div class="header">
+                logged in user: {{request.session.First_Name}} {{request.session.Last_Name}}
+            </div>
+            <div class="MessageContainer">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        <h1>Auth dashboard</h1>
+        Logged in user: <br>
+        <div class="InputRow">
+            <label class="lblClass" for="UserName">First Name:</label>
+            <div class="inpClass">{{request.session.First_Name}}</div>
+        </div>
+        <div class="InputRow">
+            <label class="lblClass" for="UserName">Last Name:</label>
+            <div class="inpClass">{{request.session.Last_Name}}</div>
+        </div>
+        <div class="InputRow">
+            <label class="lblClass" for="UserName">Email:</label>
+            <div class="inpClass">{{request.session.Email}}</div>
+        </div>
+    </body>
+</html>
